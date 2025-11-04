@@ -29,11 +29,28 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    // JUnit 5 기본 의존성은 spring-boot-starter-test에 포함되어 있으나 명시해도 무방
+    testImplementation 'org.junit.jupiter:junit-jupiter' 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'   
 
+	testImplementation 'org.mockito:mockito-core:5.11.0'
+	
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+    
 }
 
+// Mockito Agent 설정 (Configuration Time 오류 방지를 위해 doFirst로 변경)
 tasks.named('test') {
 	useJUnitPlatform()
+    
+    doFirst {
+        // Mockito Agent 경로를 testRuntimeClasspath에서 찾습니다.
+        def mockitoPath = configurations.testRuntimeClasspath.find { it.name.contains("mockito-core") }
+        
+        if (mockitoPath) {
+             // JVM 인수로 Agent를 전달
+             jvmArgs "-javaagent:${mockitoPath.absolutePath}"
+        }
+    }
 }

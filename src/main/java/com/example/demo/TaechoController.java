@@ -13,4 +13,9 @@ public class TaechoController {
 		return "index";
 	}
 	
+	@GetMapping("/")
+    public String root() {
+        return "redirect:/question/list";
+    }
+	
 }
