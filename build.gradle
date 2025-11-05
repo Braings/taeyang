@@ -38,6 +38,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
     
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    
 }
 
 // Mockito Agent 설정 (Configuration Time 오류 방지를 위해 doFirst로 변경)
