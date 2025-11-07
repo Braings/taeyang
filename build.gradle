@@ -58,4 +58,13 @@ tasks.named('test') {
              jvmArgs "-javaagent:${mockitoPath.absolutePath}"
         }
     }
+    
+}
+
+tasks.named('compileJava') {
+    options.compilerArgs.add('-parameters')
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << "-parameters"
 }
