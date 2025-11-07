@@ -40,6 +40,9 @@ dependencies {
     
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     
+     implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+    
 }
 
 // Mockito Agent 설정 (Configuration Time 오류 방지를 위해 doFirst로 변경)
