@@ -10,6 +10,7 @@ import com.example.demo.DataNotFoundException;
 
 import lombok.RequiredArgsConstructor;
 import java.time.LocalDateTime;
+import com.mysite.sbb.user.SiteUser;
 
 @RequiredArgsConstructor
 @Service
@@ -35,10 +36,11 @@ public class QuestionService {
         }
     }
     
-    public void create(String subject, String content) {
+    public void create(String subject, String content, SiteUser user) {
         Question q = new Question();
         q.setSubject(subject);
         q.setContent(content);
+        q.setAuthor(user);
         q.setCreateDate(LocalDateTime.now());
         this.questionRepository.save(q);
     }
