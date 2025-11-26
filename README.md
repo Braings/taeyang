@@ -41,4 +41,4 @@ _이태릭_
 – [x] 체크
 - [ ] 박스
 
-[하이퍼링크]([<link>](https://github.com/Braings/taeyang))
+[하이퍼링크]([<link>](github.com))
